@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ContainerProduct from "./container";
 import { getAllFunko } from "../redux/action";
 
-export default function products() {
+export default function Products() {
   const dispatch = useDispatch();
   const allFunko = useSelector((state) => state.allFunko);
   useEffect(() => {
