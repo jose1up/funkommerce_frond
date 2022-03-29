@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCategory, getProductCategory} from "../redux/action";
 import { Select } from "@chakra-ui/react";
 
-export default function filterCategory() {
+export default function FilterCategory() {
   const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.category);
   useEffect(() => {

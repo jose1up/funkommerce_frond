@@ -5,7 +5,7 @@ import { Select } from "@chakra-ui/react";
 
 
 
-export default function filterBrand() {
+export default function FilterBrand() {
   const dispatch = useDispatch();
   const allBrand = useSelector((state) => state.brands);
   useEffect(() => {
