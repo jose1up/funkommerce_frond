@@ -17,6 +17,7 @@ export default function Products() {
           return (
             <ContainerProduct
               key={funko.id}
+              id={funko.id}
               title={funko.title}
               image={funko.image}
               price={funko.price}
