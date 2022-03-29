@@ -16,9 +16,9 @@ export default function ProductDetail() {
             <figure>
                 <img src={funkoDetail.image} alt="funko"></img>
                 <h2>Name :{funkoDetail.title}</h2>
-                <p>Brand : {funkoDetail.BrandId}</p>
-                <p>Licence : {funkoDetail.licenceId}</p>
-                {/* <p>Category: {funkoDetail.Category.name}</p> */}
+                <p>Brand : {funkoDetail.Brand?.name}</p>
+                <p>Licence : {funkoDetail.License?.name}</p>
+                <p>Category: {funkoDetail.Category?.name}</p> 
                 <p>price : {funkoDetail.price}</p>
                 <p>Stock : {funkoDetail.stock}</p>
             </figure>

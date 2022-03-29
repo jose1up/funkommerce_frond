@@ -5,7 +5,7 @@ import { Select } from "@chakra-ui/react";
 
 
 
-export default function filterBrand() {
+export default function FilterBrand() {
   const dispatch = useDispatch();
   const allBrand = useSelector((state) => state.brands);
   useEffect(() => {
@@ -20,8 +20,9 @@ export default function filterBrand() {
     <Select placeholder="Select Brand" onChange={(e) => handleFilterBrands(e)}>
       <option value="all">All</option>
       {allBrand?.map((brand) => (
-        <option value={brand.name}>{brand.name}</option>
+        <option value={brand.name} key={brand.id}>{brand.name}</option>
       ))}
     </Select>
   );
 }
+

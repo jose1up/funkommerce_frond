@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllLicense, getProductLicense } from "../redux/action";
 import { Select } from "@chakra-ui/react";
 
-export default function filterLicense() {
+export default function FilterLicense() {
   const dispatch = useDispatch();
   const allLicense = useSelector((state) => state.licenses);
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function filterLicense() {
     >
       <option value="all">All</option>
       {allLicense?.map((license) => (
-        <option value={license.name}>{license.name}</option>
+        <option value={license.name} key={license.id}>{license.name}</option>
       ))}
     </Select>
   );
