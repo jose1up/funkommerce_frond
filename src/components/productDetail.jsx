@@ -13,6 +13,9 @@ export default function ProductDetail() {
     }, [dispatch])
     return (
         <div>
+            <Link to ='/'>
+                <button className="close">X</button>
+            </Link>
             <figure>
                 <img src={funkoDetail.image} alt="funko"></img>
                 <h2>Name :{funkoDetail.title}</h2>
