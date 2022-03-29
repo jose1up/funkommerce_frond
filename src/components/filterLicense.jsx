@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllLicense, getProductLicense } from "../redux/action";
 import { Select } from "@chakra-ui/react";
 
-export default function filterLicense() {
+export default function FilterLicense() {
   const dispatch = useDispatch();
   const allLicense = useSelector((state) => state.licenses);
   useEffect(() => {
