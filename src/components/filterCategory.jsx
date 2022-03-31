@@ -17,7 +17,7 @@ export default function FilterCategory() {
     <Select placeholder="Select Category" onChange={(e) => handleFilterCategory(e)}>
       <option value="all">All</option>
       {allCategories?.map((category) => (
-        <option value={category.name}>{category.name}</option>
+        <option value={category.name} key={category.id}>{category.name}</option>
       ))}
     </Select>
   );

@@ -20,7 +20,7 @@ export default function FilterLicense() {
     >
       <option value="all">All</option>
       {allLicense?.map((license) => (
-        <option value={license.name}>{license.name}</option>
+        <option value={license.name} key={license.id}>{license.name}</option>
       ))}
     </Select>
   );

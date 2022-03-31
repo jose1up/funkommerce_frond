@@ -20,8 +20,9 @@ export default function FilterBrand() {
     <Select placeholder="Select Brand" onChange={(e) => handleFilterBrands(e)}>
       <option value="all">All</option>
       {allBrand?.map((brand) => (
-        <option value={brand.name}>{brand.name}</option>
+        <option value={brand.name} key={brand.id}>{brand.name}</option>
       ))}
     </Select>
   );
 }
+
