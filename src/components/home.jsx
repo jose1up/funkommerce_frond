@@ -7,6 +7,7 @@ import Pager from "./pager";
 import FilterCategory from "./filterCategory";
 import FilterBrand from "./filterBrand";
 import FilterLicense from "./filterLicense";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ export default function Home() {
   return (
     <>
       <h1>home</h1>
+      <Link to={"/cart"}>
+        <h2>carrito</h2>
+      </Link>
       <FilterCategory />
       <FilterBrand />
       <FilterLicense />

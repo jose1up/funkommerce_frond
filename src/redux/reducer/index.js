@@ -1,4 +1,6 @@
 import {
+  CLEAR_CART,
+  ADD_TO_CART,
   FUNKO_BY_ID,
   GET_ALL_FUNKO,
   GET_ALL_BRANDS,
@@ -7,6 +9,7 @@ import {
   GET_ALL_CATEGORIES,
   GET_PRODUCT_LICENSE,
   GET_PRODUCT_CATEGORY,
+  REMOVE_ONE_FROM_CART,
 } from "../action";
 
 export const initialState = {
@@ -16,6 +19,7 @@ export const initialState = {
   licenses: [],
   brands: [],
   funko: {},
+  cart: [],
 };
 
 const cases = {};
@@ -53,7 +57,7 @@ cases[GET_ALL_BRANDS] = (initialState, payload) => ({
   brands: [...payload],
 });
 
-cases[GET_PRODUCT_BRAND]=(state, payload) => {
+cases[GET_PRODUCT_BRAND] = (state, payload) => {
   let allsFunkoBrans = state.bkAllFunko;
   let filterFonko =
     payload === "all"
@@ -71,7 +75,7 @@ cases[GET_ALL_LICENSE] = (initialState, payload) => ({
   licenses: [...payload],
 });
 
-cases[GET_PRODUCT_LICENSE]=(state, payload) => {
+cases[GET_PRODUCT_LICENSE] = (state, payload) => {
   let allsFunkoLicense = state.bkAllFunko;
   let filterFonko =
     payload === "all"
@@ -84,7 +88,34 @@ cases[GET_PRODUCT_LICENSE]=(state, payload) => {
   };
 };
 
+cases[ADD_TO_CART] = (state, payload) => {
+  let newItem = state.allFunko.find((funko) => funko.id === payload);
+  let itemsInCart = state.cart.find((item) => item.id === newItem.id);
 
+  return itemsInCart
+    ? {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.id === newItem.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        ),
+      }
+    : { ...state, cart: [...state.cart, { ...newItem, quantity: 1 }] };
+};
+
+cases[CLEAR_CART] = (initialState) => ({
+  ...initialState,
+  cart: [],
+});
+
+cases[REMOVE_ONE_FROM_CART] = (state, payload) => {
+  let itemDelete = state.cart.filter((item) => item.id !== payload);
+  return {
+    ...state,
+    cart: itemDelete,
+  };
+};
 
 export default function rootReducer(state = initialState, { type, payload }) {
   return cases[type] ? cases[type](state, payload) : state;
