@@ -1,5 +1,6 @@
 import {
   CLEAR_CART,
+  FIND_FUNKO,
   ADD_TO_CART,
   FUNKO_BY_ID,
   GET_ALL_FUNKO,
@@ -114,6 +115,13 @@ cases[REMOVE_ONE_FROM_CART] = (state, payload) => {
   return {
     ...state,
     cart: itemDelete,
+  };
+};
+
+cases[FIND_FUNKO] = (state, payload) => {
+  return {
+    ...state,
+    allFunko: [...payload],
   };
 };
 

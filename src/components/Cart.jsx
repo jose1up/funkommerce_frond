@@ -18,6 +18,8 @@ function Cart() {
       isClosable: true,
     });
   };
+  const totalPrice = (items) =>
+    items.reduce((counter, item) => counter + item.quantity * item.price, 0);
 
   return (
     <div>
@@ -34,6 +36,11 @@ function Cart() {
             />
           );
         })}
+      <div>
+        <Button width="100%" colorScheme="green">
+          Pay US$ {totalPrice(cart)}
+        </Button>
+      </div>
       <Button onClick={handleButoon}>Empty cart</Button>
     </div>
   );
