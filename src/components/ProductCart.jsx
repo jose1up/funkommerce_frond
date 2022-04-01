@@ -21,7 +21,7 @@ export default function ProductCart({ id, title, image, price, quantity }) {
     <>
       <img src={image} alt={title}></img>
       <h2>title:{title}</h2>
-      <p>price: {price}</p>
+      <p>price: US$ {price}</p>
       <p>quantity: {quantity}</p>
       <DeleteIcon onClick={(e) => handleButoon(e)} />
     </>

@@ -3,11 +3,32 @@ import React, { useEffect, useState } from "react";
 import { getAllFunko } from "../redux/action";
 import ContainerProduct from "./container";
 import loader from "../assets/Ecxd.gif";
+import { FiShoppingCart } from "react-icons/fi";
 import Pager from "./pager";
 import FilterCategory from "./filterCategory";
 import FilterBrand from "./filterBrand";
 import FilterLicense from "./filterLicense";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import {
+  Button,
+  Divider,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  Stack,
+  useDisclosure,
+  VStack,
+} from "@chakra-ui/react";
+import Cart from "./Cart";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -23,15 +44,30 @@ export default function Home() {
   useEffect(() => {
     dispatch(getAllFunko());
   }, []);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <h1>home</h1>
-      <Link to={"/cart"}>
-        <h2>carrito</h2>
-      </Link>
+      <Button onClick={onOpen}>
+        <FiShoppingCart />
+      </Button>
+      <Stack width={"80%"}>
+        <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerHeader borderBottomWidth="1px">Shopping cart</DrawerHeader>
+            <DrawerBody>
+              <Cart />
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </Stack>
       <FilterCategory />
       <FilterBrand />
       <FilterLicense />
+      <SearchBar />
       <Pager
         key={currentPage}
         funkos={funkos.length ? funkos.length : []}

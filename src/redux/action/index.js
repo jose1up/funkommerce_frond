@@ -1,8 +1,9 @@
 import axios from "axios";
 let BASE_URL = process.env.REACT_APP_BASE_URL;
+export const FIND_FUNKO = "FIND_FUNKO";
+export const CLEAR_CART = "CLEAR_CART";
 export const FUNKO_BY_ID = "FUNKO_BY_ID";
 export const ADD_TO_CART = "ADD_TO_CART";
-export const CLEAR_CART = "CLEAR_CART";
 export const GET_ALL_FUNKO = "GET_ALL_FUNKO";
 export const GET_ALL_BRANDS = "GET_ALL_BRANDS";
 export const GET_ALL_LICENSE = "GET_ALL_LICENSE";
@@ -107,5 +108,13 @@ export const clearCart = () => {
   };
 };
 
-
-
+export const findFunko = (title) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/api/product/S?name=${title}`);
+      dispatch({ type: FIND_FUNKO, payload: data });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
